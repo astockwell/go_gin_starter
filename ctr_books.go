@@ -8,6 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+# EXAMPLE ROUTES, REMOVE FOR ACTUAL USE
+
+# This struct would normally be defined elsewhere, such as in a models file/package. Defined here for simplicity (because this whole file is disposable).
 type Book struct {
 	ID     string
 	Title  string
