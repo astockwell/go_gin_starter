@@ -1,0 +1,41 @@
+{{ define "books/show" }}{{template "layout_header" . -}}
+
+<div class="row">
+    <div class="col-md-12">
+        <div style="float:right;">
+            <a href="/books" class="btn btn-secondary">Back to Books</a>
+        </div>
+
+        <h3 class="mb-3">Book Details</h3>
+
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th style="width: 150px;">ID</th>
+                    <td>{{.Book.ID}}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{.Book.Title}}</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>{{.Book.Author}}</td>
+                </tr>
+                <tr>
+                    <th>ISBN</th>
+                    <td>{{.Book.ISBN}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <hr class="mt-5" style="margin-bottom: 100px;">
+    </div>
+</div>
+
+{{- template "layout_footer" .}}{{end}}

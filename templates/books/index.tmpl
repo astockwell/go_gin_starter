@@ -1,0 +1,39 @@
+{{ define "books/index" }}{{template "layout_header" . -}}
+
+<div class="row">
+    <div class="col-md-12">
+        <div style="float:right;margin-top: 1em;">
+            <a href="/books/new" class="btn btn-primary">Add New Book</a>
+        </div>
+
+        <h3 class="mb-3">Books</h3>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Books}}
+                    <tr>
+                        <td><a href="/books/{{.ID}}">{{.ID}}</a></td>
+                        <td>{{.Title}}</td>
+                        <td>{{.Author}}</td>
+                    </tr>
+                {{end}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <hr class="mt-5" style="margin-bottom: 100px;">
+    </div>
+</div>
+
+{{- template "layout_footer" .}}{{end}}

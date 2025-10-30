@@ -1,0 +1,20 @@
+# debug_config = true
+
+# Web Server Configuration
+# These values can be overridden via environment variables or .env file using ${VAR_NAME} syntax
+host_port = '8080'  # Can also use: '${HOST_PORT}' to load from env var
+cache_bust = 'abc'
+# log_file = './log.log'  # Can also use: '${LOG_FILE}'
+log_level = 5                # 3 is recommended/default. Detail of logging (1-5): 1 is fatal-level only, 5 is trace-level detail. Level 3 is recommended for production.
+cache_templates = false
+ssl_disabled = true          # TURN OFF (set to false) IN PRODUCTION!!!
+# ssl_cert_file = './tls/cert.pem'  # Can also use: '${SSL_CERT_FILE}'
+# ssl_key_file = './tls/key.pem'    # Can also use: '${SSL_KEY_FILE}'
+
+# Session/Cookie Configuration
+secure_cookie_max_age = 0 # In seconds, e.g. 86400*7=604800; 0 means cookie persists for this session only
+# Secure keys should be set via environment variables in production
+# Use the values below for local development or override with ${ENV_VAR} syntax
+secure_cookie_signing_key = 'f61c189d22f22549258870ce13a9e55a3cdb1c254f1a8c2c0f9bd800ff5cb2a1736bd651f04f42e5808ad27c3b82016bdfab409d765d1396f9451228e478794e'
+secure_cookie_encryption_key = '558d270fdfa6633db81d30aa6c748494113302f00f2b97243466527b093abd36'
+regenerate_secure_keys = false # Set to `true` and execute the binary to generate keys and then exit

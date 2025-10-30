@@ -1,0 +1,86 @@
+# ============================================================================
+# GitHub Actions Workflow: Build and Release Cross-Platform Binaries
+# ============================================================================
+#
+# IMPORTANT: This workflow is currently COMMENTED OUT (disabled)
+#
+# What this workflow does:
+# - Automatically builds cross-platform binaries when a GitHub release is published
+# - Creates binaries for Linux (amd64), macOS (amd64), and macOS (arm64)
+# - Attaches the compiled binaries to the GitHub release
+#
+# How to enable this workflow:
+# 1. Uncomment all lines in this file (remove the '#' at the beginning of each line)
+# 2. Commit and push the changes
+# 3. The workflow will activate and run when you publish a new GitHub release
+#
+# What triggers this workflow:
+# - Publishing a GitHub release (not drafts, not tags alone)
+#
+# Platforms built:
+# - Linux (amd64): go_gin_starter--linux-amd64
+# - macOS Intel (amd64): go_gin_starter--darwin-amd64
+# - macOS Apple Silicon (arm64): go_gin_starter--darwin-arm64
+#
+# ============================================================================
+
+# name: Build and Release Cross-Platform Binaries
+# 
+# on:
+#   release:
+#     types: [published]
+# 
+# permissions:
+#   contents: write
+# 
+# jobs:
+#   build:
+#     name: Build and Attach Binaries
+#     runs-on: ubuntu-latest
+# 
+#     steps:
+#       - name: Check out code at the release tag
+#         uses: actions/checkout@v5
+#         with:
+#           ref: ${{ github.event.release.tag_name }}
+# 
+#       - name: Extract Go version from go.mod
+#         id: go-version
+#         run: echo "go-version=$(grep '^go ' go.mod | awk '{print $2}')" >> $GITHUB_OUTPUT
+# 
+#       - name: Set up Go
+#         uses: actions/setup-go@v6
+#         with:
+#           go-version: ${{ steps.go-version.outputs.go-version }}
+# 
+#       - name: Get dependencies
+#         run: go get -v -t -d ./...
+# 
+#       - name: Build Binary (Linux)
+#         env:
+#           GOOS: linux
+#           GOARCH: amd64
+#         run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o go_gin_starter--linux-amd64 .
+# 
+#       - name: Build Binary (Mac x64)
+#         env:
+#           GOOS: darwin
+#           GOARCH: amd64
+#         run: CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o go_gin_starter--darwin-amd64 .
+# 
+#       - name: Build Binary (Mac ARM64)
+#         env:
+#           GOOS: darwin
+#           GOARCH: arm64
+#         run: CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o go_gin_starter--darwin-arm64 .
+# 
+#       - name: Attach binaries to the new release
+#         uses: softprops/action-gh-release@97d42c1b50f585f357413698aa1b779307aa0d52
+#         if: startsWith(github.ref, 'refs/tags/')
+#         with:
+#           files: |
+#             go_gin_starter--linux-amd64
+#             go_gin_starter--darwin-amd64
+#             go_gin_starter--darwin-arm64
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
