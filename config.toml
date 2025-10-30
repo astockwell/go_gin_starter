@@ -15,6 +15,6 @@ ssl_disabled = true          # TURN OFF (set to false) IN PRODUCTION!!!
 secure_cookie_max_age = 0 # In seconds, e.g. 86400*7=604800; 0 means cookie persists for this session only
 # Secure keys should be set via environment variables in production
 # Use the values below for local development or override with ${ENV_VAR} syntax
-secure_cookie_signing_key = 'f61c189d22f22549258870ce13a9e55a3cdb1c254f1a8c2c0f9bd800ff5cb2a1736bd651f04f42e5808ad27c3b82016bdfab409d765d1396f9451228e478794e'
-secure_cookie_encryption_key = '558d270fdfa6633db81d30aa6c748494113302f00f2b97243466527b093abd36'
+secure_cookie_signing_key = '${SECURE_COOKIE_SIGNING_KEY}'
+secure_cookie_encryption_key = '${SECURE_COOKIE_ENCRYPTION_KEY}'
 regenerate_secure_keys = false # Set to `true` and execute the binary to generate keys and then exit
