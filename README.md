@@ -88,7 +88,7 @@ This starter follows a few battle-tested conventions to keep projects consistent
 
 ### 1. Route Naming Convention
 
-Route handlers follow `route_<Resource>_<Action>()` so related endpoints group together in file listings. Examples:
+Route handlers follow `route_<Resource>_<Action>()` so related endpoints group together in file listings. This is completely and fully inspired by Ruby on Rails' excellent guide [Rails Routing from the Outside In](https://guides.rubyonrails.org/routing.html), which goes much further in-depth about this concept. Examples:
 
 - GET handlers: `route_Books_Index()` lists all books; `route_Books_Show()` renders a single book.
 - POST handlers append `_POST` to distinguish them (for example, `route_Books_Create_POST()`).
