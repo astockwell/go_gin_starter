@@ -1,6 +1,6 @@
 # Go Gin Starter
 
-A batteries-included starter kit for building server-rendered web applications with [Gin](https://github.com/gin-gonic/gin). It pairs HTML templates, session helpers, and structured logging with a small sample feature so you can focus on shipping your own functionality.
+A batteries-included starter kit for building server-rendered web applications with [Gin](https://github.com/gin-gonic/gin). It pairs HTML templates, session helpers, and structured logging with a small sample feature so you can focus on shipping your own functionality. Gin was chosen because it's docs are extensive and excellent; nearly anything you want to do has a concrete implementation example provided for you.
 
 ## Features
 - Gin router with example controllers, HTML templates, and integration tests.
